@@ -1,4 +1,4 @@
-#include"holberton.h"
+#include"main.h"
 /**
  *print_rev - print in reverse a string
  *@s:takes a string of characters
