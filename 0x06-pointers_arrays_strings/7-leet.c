@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  *leet - encodes a string
  *@s: string
