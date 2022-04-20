@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef HOLBERTEN_H
+#define HOLBERTON_H
 void print_number(int)
 int _putchar(char c);
 char *_strcat(char *dest, char *src);
