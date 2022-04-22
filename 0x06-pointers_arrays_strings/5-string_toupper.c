@@ -1,18 +1,23 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
- *string_toupper - changes all lowercase by uppercase
- *@s: string
- *Return: s
+ * *string_toupper - changes all lowercase letters of a string to upper
  *
+ * @str: String to return
+ *
+ * Return: String
  */
-char *string_toupper(char *s)
+
+char *string_toupper(char *str)
 {
 	int i;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (s[i] >= 'a' && s[i] <= 'z')
-			s[i] = s[i] - 32;
+		if (str[i] >= 97 && str[i] <= 122)
+		{
+			str[i] = str[i] - 32;
+		}
 	}
-	return (s);
+	return (str);
 }

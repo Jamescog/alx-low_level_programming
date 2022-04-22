@@ -1,8 +1,8 @@
-#include "main.h"
+#include "holberton.h"
 #include <stdio.h>
 
 /**
- *print_array - check the code.
+ *print_array - check the code for Holberton School students.
  * @a: an array of integers
  * @n: the number of elements to swap
  *

@@ -1,81 +1,78 @@
-#include "main.h"
-
-char *add_strings(char *n1, char *n2, char *r, int r_index);
-char *infinite_add(char *n1, char *n2, char *r, int size_r);
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * add_strings - Adds the numbers stored in two strings.
- * @n1: The string containing the first number to be added.
- * @n2: The string containing the second number to be added.
- * @r: The buffer to store the result.
- * @r_index: The current index of the buffer.
- *
- * Return: If r can store the sum - a pointer to the result.
- *         If r cannot store the sum - 0.
+ * isPrintableASCII - determines if n is a printable ASCII char
+ * @n: integer
+ * Return: 1 if true, 0 if false
  */
-char *add_strings(char *n1, char *n2, char *r, int r_index)
+int isPrintableASCII(int n)
 {
-	int num, tens = 0;
-
-	for (; *n1 && *n2; n1--, n2--, r_index--)
-	{
-		num = (*n1 - '0') + (*n2 - '0');
-		num += tens;
-		*(r + r_index) = (num % 10) + '0';
-		tens = num / 10;
-	}
-
-	for (; *n1; n1--, r_index--)
-	{
-		num = (*n1 - '0') + tens;
-		*(r + r_index) = (num % 10) + '0';
-		tens = num / 10;
-	}
-
-	for (; *n2; n2--, r_index--)
-	{
-		num = (*n2 - '0') + tens;
-		*(r + r_index) = (num % 10) + '0';
-		tens = num / 10;
-	}
-
-	if (tens && r_index >= 0)
-	{
-		*(r + r_index) = (tens % 10) + '0';
-		return (r + r_index);
-	}
-
-	else if (tens && r_index < 0)
-		return (0);
-
-	return (r + r_index + 1);
+	return (n >= 32 && n <= 126);
 }
+
 /**
- * infinite_add - Adds two numbers.
- * @n1: The first number to be added.
- * @n2: The second number to be added.
- * @r: The buffer to store the result.
- * @size_r: The buffer size.
- *
- * Return: If r can store the sum - a pointer to the result.
- *         If r cannot store the sum - 0.
+ * printHexes - print hex values for string b in formatted form
+ * @b: string to print
+ * @start: starting position
+ * @end: ending position
  */
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+void printHexes(char *b, int start, int end)
 {
-	int index, n1_len = 0, n2_len = 0;
+	int i = 0;
 
-	for (index = 0; *(n1 + index); index++)
-		n1_len++;
+	while (i < 10)
+	{
+		if (i < end)
+			printf("%02x", *(b + start + i));
+		else
+			printf("  ");
+		if (i % 2)
+			printf(" ");
+		i++;
+	}
+}
 
-	for (index = 0; *(n2 + index); index++)
-		n2_len++;
+/**
+ * printASCII - print ascii values for string b,
+ * formatted to replace nonprintable chars with '.'
+ * @b: string to print
+ * @start: starting position
+ * @end: ending position
+ */
+void printASCII(char *b, int start, int end)
+{
+	int ch, i = 0;
 
-	if (size_r <= n1_len + 1 || size_r <= n2_len + 1)
-		return (0);
+	while (i < end)
+	{
+		ch = *(b + i + start);
+		if (!isPrintableASCII(ch))
+			ch = 46;
+		printf("%c", ch);
+		i++;
+	}
+}
 
-	n1 += n1_len - 1;
-	n2 += n2_len - 1;
-	*(r + size_r) = '\0';
+/**
+ * print_buffer - prints a buffer
+ * @b: string
+ * @size: size of buffer
+ */
+void print_buffer(char *b, int size)
+{
+	int start, end;
 
-	return (add_strings(n1, n2, r, --size_r));
+	if (size > 0)
+	{
+		for (start = 0; start < size; start += 10)
+		{
+			end = (size - start < 10) ? size - start : 10;
+			printf("%08x: ", start);
+			printHexes(b, start, end);
+			printASCII(b, start, end);
+			printf("\n");
+		}
+	} else
+		printf("\n");
 }
