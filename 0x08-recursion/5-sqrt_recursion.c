@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * sqrt_check - Checks for the square root of c
  *
