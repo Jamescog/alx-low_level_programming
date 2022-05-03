@@ -1,84 +1,97 @@
+#include <stdio.h>
 #include <stdlib.h>
-
+#include "holberton.h"
 /**
- * strtow - char
- * @str: pointer to string params
- * Return: char
+ *word_len - finds the length of a word
+ *@str:string to test
+ *
+ *Return:int
  */
-
-char **strtow(char *str)
+int word_len(char *str)
 {
-	int i = 0, j = 0, k = 0;
-	int len = 0, count = 0;
-	char **f, *col;
+	int i = 0, len = 0;
 
-	if (!str || !*str)
+	while (*(str + i) && *(str + i) != ' ')
 	{
-		return (NULL);
+		len++;
+		i++;
 	}
+	return (len);
+}
+/**
+ *word_count - counts the number of words
+ *
+ *@str:input
+ *
+ *Return:(no. of words)
+ *
+ */
+int word_count(char *str)
+{
+	int i = 0, len = 0, count = 0;
 
-	while (*(str + i))
+	for (i = 0; *(str + i); i++)
+	{
+		len++;
+	}
+	for (i = 0; i < len; i++)
 	{
 		if (*(str + i) != ' ')
 		{
-			if (*(str + i + 1) == ' ' || *(str + i + 1) == 0)
-			{
-				count += 1;
-			}
+			count++;
+			i += word_len(str + i);
 		}
-		i++;
 	}
+	return (count);
+}
+/**
+ *strtow - splits a string into words
+ *
+ *@str:input
+ *
+ *Return:0 - success
+ *
+ */
+char **strtow(char *str)
+{
+	int i, words, w, letters, l;
+	char **p;
 
-	if (count == 0)
+	if (str == NULL || str[0] == '\0')
 	{
 		return (NULL);
 	}
-	count += 1;
-	f = malloc(sizeof(char *) * count);
-
-	if (!f)
+	words = word_count(str);
+	if (words == 0)
 	{
 		return (NULL);
 	}
-	i = 0;
-
-	while (*str)
+	p = malloc(sizeof(char *) * (words + 1));
+	if (p == NULL)
 	{
-		while (*str == ' ' && *str)
+		return (NULL);
+	}
+	for (i = 0; i < words; i++)
+	{
+		while (*(str + w) == ' ')
 		{
-			str++;
+			w++;
 		}
-		len = 0;
-
-		while (*(str + len) != ' ' && *(str + len))
+		letters = word_len(str + w);
+		p[i] = malloc(sizeof(char) * (letters + 1));
+		if (p[i] == NULL)
 		{
-			len += 1;
-		}
-		len += 1;
-		col = malloc(sizeof(char) * len);
-
-		if (!col)
-		{
-			for (k = j - 1; k >= 0; k--)
-			{
-				free(f[k]);
-			}
-			free(f);
+			for (; i >= 0; i--)
+				free(p[i]);
+			free(p);
 			return (NULL);
 		}
-
-		for (k = 0; k < (len - 1);  k++)
+		for (l = 0; l < letters; l++)
 		{
-			*(col + k) = *(str++);
+			p[i][l] = str[w++];
 		}
-		*(col + k) = '\0';
-		*(f + j) = col;
-
-		if (j < (count - 1))
-		{
-			j++;
-		}
+		p[i][l] = '\0';
 	}
-	*(f + j) = NULL;
-	return (f);
+	p[i] = NULL;
+	return (p);
 }
