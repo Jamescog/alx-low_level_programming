@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * main - Prints alphabet in lowercases
+ * print_alphabet - Prints alphabet in lowercases
  *
  * @letter - letter holder in the loop
  */
-void print_alphabet(void);
+void print_alphabet(void)
 {
 	char letter;
 
@@ -16,3 +16,4 @@ void print_alphabet(void);
 
 	return (0);
 }
+
