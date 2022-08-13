@@ -6,7 +6,7 @@
  * pputchar_integer - take care the printing using _putchar
  * @n: The number to begin counting at.
  */
-int pputchar_integer(int n)
+void pputchar_integer(int n)
 {
 	if (n < 0)
 	{
