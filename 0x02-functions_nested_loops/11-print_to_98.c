@@ -31,6 +31,7 @@ void print_to_98(int n)
 				pputchar_integer(n);
 				break;
 			}
+			pputchar_integer(n);
 			_putchar(',');
 			_putchar(' ');
 			n++;
