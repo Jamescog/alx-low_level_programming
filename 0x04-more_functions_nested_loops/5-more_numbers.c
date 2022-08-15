@@ -3,19 +3,28 @@
  *more_numbers - prints 10 times the numbers fron 0 to 14
  *
  */
+void pputchar(int num)
+{
+	if (num / 10)
+	{
+		pputchar(num / 10);
+	}
+
+	_putchar((num % 10) + '0');
+}
 void more_numbers(void)
 {
-	int c;
-	int t;
+	int counter, num;
 
-	for (t = 0; t < 10; t++)
+	counter = 1;
+	while (counter <=10)
 	{
-		for (c = 0; c <= 14; c++)
+		for (num = 0; num <= 14; num++)
 		{
-			if (c >= 10)
-				_putchar (c / 10 + '0');
-			_putchar (c % 10 + '0');
+			pputchar(num);
 		}
-		_putchar ('\n');
+		_putchar('\n');
+		counter++;
 	}
+	
 }
