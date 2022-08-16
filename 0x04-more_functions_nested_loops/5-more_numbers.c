@@ -2,6 +2,7 @@
 /**
  *more_numbers - prints 10 times the numbers fron 0 to 14
  *
+ * pputchar - custom int printer using _putchar
  */
 void pputchar(int num)
 {
