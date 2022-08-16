@@ -36,7 +36,7 @@ int check_prime(int number)
 int main(void)
 {
 	long int big_number, num, largest_prime;
-	big_number = 1231952;
+	big_number = 612852475143;
 	largest_prime = 1;
 
 	for (num = 2; num <= big_number; num++)
