@@ -1,5 +1,4 @@
-#include "holberton.h"
-
+#include "james.h"
 /**
  * _strcat - concatenates two strings
  *
@@ -12,20 +11,21 @@
 
 char *_strcat(char *dest, char *src)
 {
+	int count = 0;
 	int i = 0;
-	int j = 0;
 
-	while (dest[i] != '\0')
-		i++;
-
-	while (src[j] != '\0')
+	while (dest[count] != '\0')
 	{
-		*(dest + i) = src[j];
-		j++;
 		i++;
+		count++;
 	}
-
-	*(dest + i) = '\0';
+	count = 0;
+	while (src[count] != 0)
+	{
+		dest[i] = src[count];
+		i++;
+		count;
+	}
 
 	return (dest);
 }
