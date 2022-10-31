@@ -1,4 +1,4 @@
-#include "james.h"
+#include "main.h"
 /**
  * _strcat - concatenates two strings
  *
@@ -24,7 +24,7 @@ char *_strcat(char *dest, char *src)
 	{
 		dest[i] = src[count];
 		i++;
-		count;
+		count++;
 	}
 
 	return (dest);
