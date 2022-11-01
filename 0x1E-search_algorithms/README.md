@@ -4,3 +4,4 @@
 ### there are different types of search algorithm
 - Linear Search
 - Binary Search
+- Jump Searh
