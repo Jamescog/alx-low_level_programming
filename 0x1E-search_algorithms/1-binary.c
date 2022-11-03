@@ -10,10 +10,15 @@
 */
 int binary_search(int *array, size_t size, int value)
 {
-	int high = size - 1;
+	int high = size;
 	int low = 0;
 	int mid;
 	int i = 0;
+
+	if (size == 0)
+	{
+		return (-1);
+	}
 
 	while (low != high)
 	{
