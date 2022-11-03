@@ -2,8 +2,8 @@
 /**
  * binary_search - searchs for a value in a sorted array of integers using
  *                  Binary search algorithm
- * @array: array is a pointer to the first element of the 
- * 		   array to search in
+ * @array: array is a pointer to the first element of the
+ * 			array to search in
  * @size: the number of elements in array
  * @value: value to search for
  * Return: the index of the value
@@ -38,7 +38,7 @@ int binary_search(int *array, size_t size, int value)
 		if (array[mid] == value)
 		{
 			putchar('\n');
-			return mid;
+			return (mid);
 		}
 		else if (array[mid] < value)
 		{
@@ -50,5 +50,5 @@ int binary_search(int *array, size_t size, int value)
 		}
 		putchar('\n');
 	}
-	return -1;
+	return (-1);
 }
