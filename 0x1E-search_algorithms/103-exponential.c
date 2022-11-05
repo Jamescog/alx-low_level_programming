@@ -82,5 +82,5 @@ int exponential_search(int *array, size_t size, int value)
 	{
 		i = i - 1;
 	}
-	return b_search(array, i, j, value);
+	return (b_search(array, i, j, value));
 }
